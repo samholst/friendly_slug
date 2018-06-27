@@ -1,7 +1,7 @@
 # FriendlySlug
 
 Friendly Slug is meant to dynamically create SEO friendly URL links. It is extremely lightweight and non resource intensive. Friendly Slug ties directly into the Rails URL Helpers so you dont 
-have to change anything. There is no need to create a Rails Migration as this gem does not add anything to your current database. You must have Active Record in your code base for this to work.
+have to change anything. There is no need to create a Rails Migration as this gem does not add anything to your current database. You must have Active Model in your code base for this to work.
 
 ## Installation
 
@@ -24,10 +24,11 @@ Or install it yourself as:
 In the model you want to add your slug to, simply put the following code in it:
 
 ```ruby
+# models/your_model.rb
 build_friendly_slug :title, :id
 ```
 
-You will want at least one unique element that you can search by to retrieve a database row. This attribute should also have an index.
+You must provide one unique indexed attribute that you can search by to retrieve a database row and one other attribute you want to appear in the URL. The method only accepts two parameters at the moment.
 
 For example, if I have a blog post with a `title` and `id`, `id` being a primary key and also an indexed table attribute, my slugged link would look like this:
 
@@ -35,15 +36,15 @@ For example, if I have a blog post with a `title` and `id`, `id` being a primary
 @blog.title = "The Great Friendly Slug"
 
 # views/blogs/index.rb
-link_to @blog_post.title, blog_post_path(@blog_post) # => http://localhost:3000/blogs/the-great-friendly-slug-1
+link_to @blog.title, blog_path(@blog) # => http://localhost:3000/blogs/the-great-friendly-slug-1
 
 # controllers/blogs_controller.rb
-def set_blog_post
-  @blog_post = Blog.find(params[:id].split("-".last)) # => 1
+def set_blog
+  @blog = Blog.find(params[:id].split("-").last) # => 1
 end
 ```
 
-In the above example, we will split the `id`, which will end up being `"the-great-friendly-slug-1"`, `1` being the `id` of the actualy blog post, and the preceding setence being the title.
+In the above example, we will split the `id`, which will end up being `"the-great-friendly-slug-1"`, `1` being the `id` of the actualy blog post, and the preceding sentence being the title.
 
 Likewise you could move
 
@@ -57,9 +58,15 @@ Doing it the this way would require you do call `.first` in the controller inste
 
 ```ruby
 # controllers/blogs_controller.rb
-def set_blog_post
-  @blog_post = Blog.find(params[:id].split("-".first)) # => 1
+def set_blog
+  @blog = Blog.find(params[:id].split("-").first) # => 1
 end
+```
+
+You can also set a static string in place of an attribute if you wanted URL's to be similar in wording.
+
+```ruby
+build_friendly_slug :id, "My Static String"  # => http://localhost:3000/blogs/:id-my-static-string
 ```
 
 ## Development
