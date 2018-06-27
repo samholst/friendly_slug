@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = %q{Generate a model specific SEO URL friendly slug.}
   spec.description   = %q{A simple SEO URL friendly slug model generator.}
-  spec.homepage      = "https://rubygems.org/gems/friendly-slug"
+  spec.homepage      = "https://github.com/samholst/friendly_slug"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
@@ -23,4 +23,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "bundler", "~> 1.16"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec", "~> 3.0"
+  spec.add_development_dependency "active_model", "~> 3.0"
 end
