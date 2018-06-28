@@ -1,0 +1,11 @@
+one:
+  id: 1
+  title: This is the greatest post !@#23_ &^asf
+  body: MyText
+  views: 12
+
+two:
+  id: 2
+  title: Just a normal for $15 test string!
+  body: MyText
+  views: 14
