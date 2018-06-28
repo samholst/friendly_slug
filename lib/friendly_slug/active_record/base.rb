@@ -17,7 +17,7 @@ module FriendlySlug
 
         class_eval do
           def to_param
-            "#{lookup_key(self.class.first_attribute_key)}-#{lookup_key(self.class.second_attribute_key)}".to_s.gsub(/<\/?[^>]*>|[^\w\s-]/, '').strip.downcase.gsub(/\s/, '-')
+            "#{lookup_key(self.class.first_attribute_key)}-#{lookup_key(self.class.second_attribute_key)}".to_s.gsub(/<\/?[^>]*>|[^\w\s-]/, '').strip.downcase.gsub(/\s{1,}/, '-')
           end
 
           private 
