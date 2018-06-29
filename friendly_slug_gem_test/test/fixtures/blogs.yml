@@ -8,4 +8,10 @@ two:
   id: 2
   title: Just a normal for $15 test string!
   body: MyText
+  views: 13
+
+three:
+  id: 3
+  title: Just george  normal for $15 test string!
+  body: MyText
   views: 14
