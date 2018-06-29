@@ -1,9 +1,10 @@
 module FriendlySlug
   module ActiveRecord
     module Base
-      def build_friendly_slug(first_attribute_key, second_attribute_key)
+      def build_friendly_slug(first_attribute_key, second_attribute_key, use: nil)
         instance_variable_set("@first_attribute_key", first_attribute_key)
         instance_variable_set("@second_attribute_key", second_attribute_key)
+        instance_variable_set("@use_key", use)
 
         instance_eval do
           def first_attribute_key
@@ -12,6 +13,14 @@ module FriendlySlug
 
           def second_attribute_key
             @second_attribute_key
+          end
+
+          def use_key
+            @use_key
+          end
+
+          def find_slugged(id)
+            find(id.split("-").send(use_key))
           end
         end
 

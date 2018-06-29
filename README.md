@@ -25,10 +25,11 @@ In the model you want to add your slug to, simply put the following code in it:
 
 ```ruby
 # models/your_model.rb
-build_friendly_slug :title, :id
+build_friendly_slug :title, :id, use: :last
 ```
 
-You must provide one unique indexed attribute that you can search by to retrieve a database row and one other attribute you want to appear in the URL. The method only accepts two parameters at the moment.
+You must provide one unique indexed attribute that you can search by to retrieve a database row and one other attribute you want to appear in the URL. The method accepts three parameters, the last parameter defines where the unique key is in the string that will be looked up.
+The only symbols accepted are `:first` or `:last`. Since our unique id in the example above is in the second parameter spot, we will `:last` for second.
 
 For example, if I have a blog post with a `title` and `id`, `id` being a primary key and also an indexed table attribute, my slugged link would look like this:
 
@@ -40,33 +41,31 @@ link_to @blog.title, blog_path(@blog) # => http://localhost:3000/blogs/the-great
 
 # controllers/blogs_controller.rb
 def set_blog
-  @blog = Blog.find(params[:id].split("-").last) # => 1
+  @blog = Blog.find_slugged(params[:id]) # => 1
 end
 ```
 
-In the above example, we will split the `id`, which will end up being `"the-great-friendly-slug-1"`, `1` being the `id` of the actualy blog post, and the preceding sentence being the title.
+In the above example, we will split the `id`, which will end up being `"the-great-friendly-slug-1"`, `1` being the `id` of the actual blog post, and the preceding sentence being the title.
 
 Likewise you could move
 
 ```ruby
-build_friendly_slug :id, :title
+build_friendly_slug :id, :title, use: :first
 ```
 
-the reversed way to have the Friendly Slug be `"1-the-great-friendly-slug"`. It could be whatever you want it to be as you as long as you can search a unique attribute with the slugged text.
-
-Doing it the this way would require you do call `.first` in the controller instead of `.last` in the lookup:
+the reversed way to have the Friendly Slug be `"1-the-great-friendly-slug"`. We then change the `use` to be `:first`, since now our unique key is in the first parameter spot. The attribute can be whatever you want it to be as you as long as you can search a unique attribute with the slugged text.
 
 ```ruby
 # controllers/blogs_controller.rb
 def set_blog
-  @blog = Blog.find(params[:id].split("-").first) # => 1
+  @blog = Blog.find_slugged(params[:id]) # => 1
 end
 ```
 
 You can also set a static string in place of an attribute if you wanted URL's to be similar in wording.
 
 ```ruby
-build_friendly_slug :id, "My Static String"  # => http://localhost:3000/blogs/:id-my-static-string
+build_friendly_slug :id, "My Static String", use: :first  # => http://localhost:3000/blogs/:id-my-static-string
 ```
 
 ## Development

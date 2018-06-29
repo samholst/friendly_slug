@@ -51,7 +51,7 @@ class BlogsController < ApplicationController
 
   private
     def set_blog
-      @blog = Blog.find(params[:id].split("-").last)
+      @blog = Blog.find_slugged(params[:id])
     end
 
     def blog_params
