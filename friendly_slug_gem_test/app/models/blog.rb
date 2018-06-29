@@ -1,3 +1,3 @@
 class Blog < ApplicationRecord
-  build_friendly_slug :title, :id, key_position: :last
+  build_friendly_slug :title, :id, use: :last
 end
