@@ -29,7 +29,7 @@ build_friendly_slug :title, :id, use: :last
 ```
 
 You must provide one unique indexed attribute that you can search by to retrieve a database row and one other attribute you want to appear in the URL. The method accepts three parameters, the last parameter defines where the unique key is in the string that will be looked up.
-The only symbols accepted are `:first` or `:last`. Since our unique id in the example above is in the second parameter spot, we will `:last` for second.
+The only symbols accepted are `:first` or `:last`. Since our unique id in the example above is in the second parameter spot, we will use `:last`.
 
 For example, if I have a blog post with a `title` and `id`, `id` being a primary key and also an indexed table attribute, my slugged link would look like this:
 
