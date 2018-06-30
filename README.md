@@ -76,7 +76,7 @@ build_friendly_slug :title, use: :database
 link_to @blog.title, blog_path(@blog) # => http://localhost:3000/blogs/the-great-friendly-slug
 ```
 
-or you can chanin on attribute symbols to generate a slug with a `:title` and a `:author`:
+or you can chain on attribute symbols to generate a slug with a `:title` and a `:author` (author is not a reference in this scenario):
 
 ```ruby
 # models/your_model.rb
