@@ -13,10 +13,25 @@ class ActionDispatch::IntegrationTest
 end
 
 module TestAnswers
-  TEST_ANSWERS = [
+  ONE_PARAM_ANSWERS = [
+    "",
+    "1",
+    "2",
+    "3",
+  ]
+
+  TWO_PARAM_ANSWERS = [
     "",
     "this-is-the-greatest-post-23_-asf-1",
     "just-a-normal-for-15-test-string-2",
     "just-george-normal-for-15-test-string-3",
+  ]
+
+  TOPIC_ONE_PARAM_ANSWERS = [
+    "",
+    "my-string",
+    "my-string-2",
+    "mystring3",
+    "my-string-4",
   ]
 end
