@@ -29,9 +29,15 @@ module FriendlySlug
           before_save :_update_slug
 
           def to_param
-            self.class._friendly_attribute_list.map do |attribute|
-              _lookup_key(self.class.send("_friendly_#{attribute.to_s}_key")).to_s
-            end.join("-").gsub(/<\/?[^>]*>|[^\w\s-]/, '').strip.downcase.gsub(/\s{1,}/, '-')
+            if self.respond_to?(:slug)
+              if self.slug.nil? || self.send("#{self.class.send("_friendly_attribute_list").first.to_s}_changed?".to_sym)
+                create_slug
+              else
+                self.slug
+              end
+            else
+              create_slug
+            end
           end
 
           private 
@@ -41,12 +47,18 @@ module FriendlySlug
 
           def _update_slug
             if self.class._friendly_use_key == :database
-              unless self.class.exists?(slug: self.to_param)
+              unless self.class.where("slug = ? AND id != ?", self.to_param, self.id.nil? ? "NULL" : self.id).any? 
                 self.slug = self.to_param 
               else
-                self.errors.add(:base, 'A slug already exists with that exact string.')
+                self.slug = "#{self.to_param}" + SecureRandom.hex(6)
               end
             end
+          end
+
+          def create_slug
+            self.class._friendly_attribute_list.map do |attribute|
+              _lookup_key(self.class.send("_friendly_#{attribute.to_s}_key")).to_s
+            end.join("-").gsub(/<\/?[^>]*>|[^\w\s-]/, '').strip.downcase.gsub(/\s{1,}/, '-')
           end
         end
       end
