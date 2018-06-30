@@ -8,7 +8,7 @@ class MainSlugTest < ActionDispatch::IntegrationTest
     test "friendly slug vist the filtered out ##{blog.id} title" do
       get blog_url(blog)
       assert_response :success
-      assert_equal(request.env["REQUEST_URI"], "/blogs/#{TestAnswers::TWO_PARAM_ANSWERS[blog.id]}")
+      assert_equal("/blogs/#{TestAnswers::TWO_PARAM_ANSWERS[blog.id]}", request.env["REQUEST_URI"])
     end
   end
 
@@ -20,7 +20,7 @@ class MainSlugTest < ActionDispatch::IntegrationTest
     test "friendly slug vist the filtered out ##{blog.id}" do
       get blog_url(blog)
       assert_response :success
-      assert_equal(request.env["REQUEST_URI"], "/blogs/#{TestAnswers::ONE_PARAM_ANSWERS[blog.id]}")
+      assert_equal("/blogs/#{TestAnswers::ONE_PARAM_ANSWERS[blog.id]}", request.env["REQUEST_URI"])
     end
   end
 
@@ -28,7 +28,7 @@ class MainSlugTest < ActionDispatch::IntegrationTest
     test "friendly database slug filters out ##{topic.id} title" do
       get topic_url(topic)
       assert_response :success
-      assert_equal(request.env["REQUEST_URI"], "/topics/#{TestAnswers::TOPIC_ONE_PARAM_ANSWERS[topic.id]}")
+      assert_equal("/topics/#{TestAnswers::TOPIC_ONE_PARAM_ANSWERS[topic.id]}", request.env["REQUEST_URI"])
     end
   end
 end

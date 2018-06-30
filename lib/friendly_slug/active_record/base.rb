@@ -59,7 +59,7 @@ module FriendlySlug
           def _create_slug
             self.class._friendly_attribute_list.map do |attribute|
               _lookup_key(self.class.send("_friendly_#{attribute.to_s}_key")).to_s
-            end.join("-").gsub(/<\/?[^>]*>|[^\w\s-]/, '').strip.downcase.gsub(/\s{1,}/, '-')
+            end.join("-").gsub(/<\/?[^>]*>|[^\.\w\s-]/, '').strip.downcase.gsub(/\s{1,}|\./, '-').gsub(/-{2,}/, "-")
           end
 
           def _unique_attribute_changed?

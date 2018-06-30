@@ -3,7 +3,8 @@ require 'test_helper'
 class TopicTest < ActiveSupport::TestCase
   Topic.all.each do |topic|
     test "friendly database slug filters out ##{topic.id} title" do
-      assert_equal(topic.to_param, TestAnswers::TOPIC_ONE_PARAM_ANSWERS[topic.id])
+      topic.slug = nil
+      assert_equal(TestAnswers::TOPIC_ONE_PARAM_ANSWERS[topic.id], topic.to_param)
     end
   end
 

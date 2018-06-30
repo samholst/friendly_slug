@@ -32,5 +32,6 @@ module TestAnswers
     "my-string",
     "my-string-2",
     "mystring3",
+    "my-string-4",
   ]
 end

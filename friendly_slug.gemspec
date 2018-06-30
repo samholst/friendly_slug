@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["sawohol@gmail.com"]
 
   spec.summary       = %q{Generate a model specific SEO URL friendly slug.}
-  spec.description   = %q{A simple SEO URL friendly slug model generator. Friendly Slug is meant to dynamically create SEO friendly URL links. It is extremely lightweight and non resource intensive. Friendly Slug ties directly into the Rails URL Helpers so you dont have to change anything. There is no need to create a Rails Migration as this gem does not add anything to your current database. You must have Active Model in your code base for this to work.}
+  spec.description   = %q{A simple SEO URL friendly slug model generator. Friendly Slug is meant to dynamically create SEO friendly URL links. It is extremely lightweight and non resource intensive. Friendly Slug ties directly into the Rails URL Helpers so you dont have to change anything. There is no need to create a Rails Migration as this gem does not add anything to your current database unless you want to use the database option. You must have Active Model in your code base for this to work.}
   spec.homepage      = "https://github.com/samholst/friendly_slug"
   spec.license       = "MIT"
 

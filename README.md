@@ -1,7 +1,7 @@
 # FriendlySlug
 
 Friendly Slug is meant to dynamically create SEO friendly URL links. It is extremely lightweight and non resource intensive. Friendly Slug ties directly into the Rails URL Helpers so you dont 
-have to change anything. There is no need to create a Rails Migration as this gem does not add anything to your current database. You must have Active Model in your code base for this to work.
+have to change anything. There is no need to create a Rails Migration as this gem does not add anything to your current database unless you want to use the database option. You must have Active Model in your code base for this to work.
 
 ## Installation
 
@@ -119,6 +119,11 @@ end
 When this is set in your controller, it will find the row with that specific `slug` and return it to you. In this specific case, the post with that `slug` has an `id` of 1. You need to leave `params[:id]` as is. The `id` coming in
 is the slugged title, which is then taken by the model's `find_by_slug` class method for the search. The gem's magic allows you to not have to worry about many intricate things such as this.
 
+If you decide to change the format of how your slugs are generated through the `build_friendly_slug` after you have originally created them, you will need to run the following snippet:
+
+```ruby
+Blog.all.map{|b| b.slug = nil; b.save}
+```
 
 ## Development
 

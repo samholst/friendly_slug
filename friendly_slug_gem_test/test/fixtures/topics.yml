@@ -1,6 +1,6 @@
 one:
   id: 1
-  title: My String
+  title: My String!!#$#@#%#
   slug: my-string
   color: Blue
   views: 1
@@ -18,3 +18,10 @@ three:
   slug: mystring3
   color: White
   views: 3
+
+three:
+  id: 4
+  title: My  .String--4
+  slug: my-string-4
+  color: White
+  views: 4
