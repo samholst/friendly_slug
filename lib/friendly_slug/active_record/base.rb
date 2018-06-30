@@ -31,12 +31,12 @@ module FriendlySlug
           def to_param
             if self.respond_to?(:slug)
               if self.slug.nil? || self.send("#{self.class.send("_friendly_attribute_list").first.to_s}_changed?".to_sym)
-                create_slug
+                _create_slug
               else
                 self.slug
               end
             else
-              create_slug
+              _create_slug
             end
           end
 
@@ -51,7 +51,7 @@ module FriendlySlug
               unless self.class.where("slug = ? AND id != ?", current_slug, self.id.nil? ? "NULL" : self.id).any? 
                 self.slug = current_slug
               else
-                self.slug = current_slug.to_s + SecureRandom.hex(6)
+                self.slug = [current_slug.to_s, SecureRandom.hex(6)].join("-")
               end
             end
           end
