@@ -1,0 +1,20 @@
+one:
+  id: 1
+  title: My String
+  slug: my-string
+  color: Blue
+  views: 1
+
+two:
+  id: 2
+  title: My String 2
+  slug: my-string-2
+  color: Red
+  views: 2
+
+three:
+  id: 3
+  title: MyString3
+  slug: mystring3
+  color: White
+  views: 3

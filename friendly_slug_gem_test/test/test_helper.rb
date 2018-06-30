@@ -26,4 +26,11 @@ module TestAnswers
     "just-a-normal-for-15-test-string-2",
     "just-george-normal-for-15-test-string-3",
   ]
+
+  TOPIC_ONE_PARAM_ANSWERS = [
+    "",
+    "my-string",
+    "my-string-2",
+    "mystring3",
+  ]
 end

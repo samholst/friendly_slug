@@ -24,4 +24,11 @@ class MainSlugTest < ActionDispatch::IntegrationTest
     end
   end
 
+  Topic.all.each do |topic|
+    test "friendly database slug filters out ##{topic.id} title" do
+      get topic_url(topic)
+      assert_response :success
+      assert_equal(request.env["REQUEST_URI"], "/topics/#{TestAnswers::TOPIC_ONE_PARAM_ANSWERS[topic.id]}")
+    end
+  end
 end

@@ -27,6 +27,7 @@ module FriendlySlug
 
         class_eval do
           before_save :_update_slug
+          validates_uniqueness_of :slug if self.class.respond_to?(:slug)
 
           def to_param
             self.class._friendly_attribute_list.map do |attribute|
