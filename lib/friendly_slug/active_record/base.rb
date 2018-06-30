@@ -47,15 +47,16 @@ module FriendlySlug
 
           def _update_slug
             if self.class._friendly_use_key == :database
-              unless self.class.where("slug = ? AND id != ?", self.to_param, self.id.nil? ? "NULL" : self.id).any? 
-                self.slug = self.to_param 
+              current_slug = self.to_param
+              unless self.class.where("slug = ? AND id != ?", current_slug, self.id.nil? ? "NULL" : self.id).any? 
+                self.slug = current_slug
               else
-                self.slug = "#{self.to_param}" + SecureRandom.hex(6)
+                self.slug = current_slug.to_s + SecureRandom.hex(6)
               end
             end
           end
 
-          def create_slug
+          def _create_slug
             self.class._friendly_attribute_list.map do |attribute|
               _lookup_key(self.class.send("_friendly_#{attribute.to_s}_key")).to_s
             end.join("-").gsub(/<\/?[^>]*>|[^\w\s-]/, '').strip.downcase.gsub(/\s{1,}/, '-')
