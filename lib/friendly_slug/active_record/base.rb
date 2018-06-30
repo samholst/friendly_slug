@@ -26,15 +26,21 @@ module FriendlySlug
         end
 
         class_eval do
+          before_save :_update_slug
+
           def to_param
             self.class._friendly_attribute_list.map do |attribute|
-              lookup_key(self.class.send("_friendly_#{attribute.to_s}_key")).to_s
+              _lookup_key(self.class.send("_friendly_#{attribute.to_s}_key")).to_s
             end.join("-").gsub(/<\/?[^>]*>|[^\w\s-]/, '').strip.downcase.gsub(/\s{1,}/, '-')
           end
 
           private 
-          def lookup_key(k)
+          def _lookup_key(k)
             k.is_a?(Symbol)? self.send(k) : k.to_s 
+          end
+
+          def _update_slug
+            self.slug = self.to_param if self.class._friendly_use_key == :database
           end
         end
       end
