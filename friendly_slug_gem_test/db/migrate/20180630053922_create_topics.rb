@@ -8,5 +8,6 @@ class CreateTopics < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
+    add_index :topics, :slug, unique: true
   end
 end

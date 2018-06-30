@@ -27,7 +27,6 @@ module FriendlySlug
 
         class_eval do
           before_save :_update_slug
-          validates_uniqueness_of :slug if self.class.respond_to?(:slug)
 
           def to_param
             self.class._friendly_attribute_list.map do |attribute|
@@ -41,7 +40,13 @@ module FriendlySlug
           end
 
           def _update_slug
-            self.slug = self.to_param if self.class._friendly_use_key == :database
+            if self.class._friendly_use_key == :database
+              unless self.class.exists?(slug: self.to_param)
+                self.slug = self.to_param 
+              else
+                self.errors.add(:base, 'A slug already exists with that exact string.')
+              end
+            end
           end
         end
       end

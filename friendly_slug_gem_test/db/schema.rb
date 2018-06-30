@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 2018_06_30_053922) do
     t.bigint "views"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["slug"], name: "index_topics_on_slug", unique: true
   end
 
 end
