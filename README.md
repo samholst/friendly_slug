@@ -1,3 +1,5 @@
+[![Gem Version](https://badge.fury.io/rb/friendly_slug.svg)](https://badge.fury.io/rb/friendly_slug)
+
 # FriendlySlug
 
 Friendly Slug is meant to dynamically create SEO friendly URL links. It is extremely lightweight and non resource intensive. Friendly Slug ties directly into the Rails URL Helpers so you dont 
