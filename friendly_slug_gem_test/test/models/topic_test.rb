@@ -1,11 +1,36 @@
 require 'test_helper'
 
 class TopicTest < ActiveSupport::TestCase
-  Topic.all.each do |topic|
-    test "friendly database slug filters out ##{topic.id} title" do
-      topic.slug = nil
-      assert_equal(TestAnswers::TOPIC_ONE_PARAM_ANSWERS[topic.id], topic.to_param)
-    end
+  # Doesn't work with CI
+  # Topic.all.each do |topic|
+  #   test "friendly database slug filters out ##{topic.id} title" do
+  #     topic.slug = nil
+  #     assert_equal(TestAnswers::TOPIC_ONE_PARAM_ANSWERS[topic.id], topic.to_param)
+  #   end
+  # end
+
+  test "friendly database slug filters out #1 title" do
+    topic = Topic.find(1)
+    topic.slug = nil
+    assert_equal(TestAnswers::TOPIC_ONE_PARAM_ANSWERS[topic.id], topic.to_param)
+  end
+
+  test "friendly database slug filters out #2 title" do
+    topic = Topic.find(2)
+    topic.slug = nil
+    assert_equal(TestAnswers::TOPIC_ONE_PARAM_ANSWERS[topic.id], topic.to_param)
+  end
+
+  test "friendly database slug filters out #3 title" do
+    topic = Topic.find(3)
+    topic.slug = nil
+    assert_equal(TestAnswers::TOPIC_ONE_PARAM_ANSWERS[topic.id], topic.to_param)
+  end
+
+  test "friendly database slug filters out #4 title" do
+    topic = Topic.find(4)
+    topic.slug = nil
+    assert_equal(TestAnswers::TOPIC_ONE_PARAM_ANSWERS[topic.id], topic.to_param)
   end
 
   test "friendly database slug filters out a new topic title" do
