@@ -1,6 +1,9 @@
 require "bundler/gem_tasks"
-require "rspec/core/rake_task"
+require 'rake/testtask'
 
-RSpec::Core::RakeTask.new(:spec)
+Rake::TestTask.new(:test) do |t|
+  t.pattern = 'friendly_slug_gem_test/test/**/*_test.rb'
+  t.verbose = false
+end
 
-task :default => :spec
+task default: :test

@@ -1,4 +1,5 @@
 [![Gem Version](https://badge.fury.io/rb/friendly_slug.svg)](https://badge.fury.io/rb/friendly_slug)
+[![Build Status](https://travis-ci.org/samholst/friendly_slug.svg?branch=master)](https://travis-ci.org/samholst/friendly_slug)
 
 # FriendlySlug
 
