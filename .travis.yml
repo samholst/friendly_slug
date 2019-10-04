@@ -5,6 +5,6 @@ language: ruby
 rvm:
   - 2.5.0
 
-before_script: "bundle update rake && cd friendly_slug_gem_test && rake db:create && rake db:migrate"
+before_script: "cd friendly_slug_gem_test && bundle exec rake db:create && bundle exec rake db:migrate"
 
-script: "bundle exec rake test"
+script: "cd friendly_slug_gem_test && bundle exec rake test"
