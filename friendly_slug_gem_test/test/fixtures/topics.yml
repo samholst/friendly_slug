@@ -19,7 +19,7 @@ three:
   color: White
   views: 3
 
-three:
+four:
   id: 4
   title: My  .String--4
   slug: my-string-4

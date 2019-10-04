@@ -57,9 +57,15 @@ module FriendlySlug
           end
 
           def _create_slug
-            self.class._friendly_attribute_list.map do |attribute|
+            fresh_slug = self.class._friendly_attribute_list.map do |attribute|
               _lookup_key(self.class.send("_friendly_#{attribute.to_s}_key")).to_s
-            end.join("-").gsub(/<\/?[^>]*>|[^\.\w\s-]/, '').strip.downcase.gsub(/\s{1,}|\./, '-').gsub(/-{2,}/, "-")
+            end.
+              join("-").
+              gsub(/<\/?[^>]*>|[^\.\w\s-]/, '').
+              strip.downcase.gsub(/\s{1,}|\./, '-').
+              gsub(/-{2,}/, "-")
+
+            fresh_slug[-1] == "-" ? fresh_slug[0...-1] : fresh_slug
           end
 
           def _unique_attribute_changed?

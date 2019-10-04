@@ -12,7 +12,10 @@ class TopicTest < ActiveSupport::TestCase
     topic = Topic.create!(title: "Baby This Is a New Topic")
     assert_equal(topic.to_param, "baby-this-is-a-new-topic")
 
-    topic.update(title: "My Newly Updated Title")
+    topic.update(title: "My Newly Updated Title -")
+    assert_equal(topic.to_param, "my-newly-updated-title")
+
+    topic.update(title: "My Newly Updated Title--")
     assert_equal(topic.to_param, "my-newly-updated-title")
   end
 end
