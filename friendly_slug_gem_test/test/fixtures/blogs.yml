@@ -15,3 +15,21 @@ three:
   title: Just george  normal for $15 test string!
   body: MyText
   views: 14
+
+four:
+  id: 4
+  title: This is the greatest post !@#23_ &^asf
+  body: MyText
+  views: 12
+
+five:
+  id: 5
+  title: Just a normal for $15 test string!
+  body: MyText
+  views: 13
+
+six:
+  id: 6
+  title: Just george  normal for $15 test string!
+  body: MyText
+  views: 14

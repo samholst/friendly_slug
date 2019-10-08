@@ -27,6 +27,13 @@ module TestAnswers
     "just-george-normal-for-15-test-string-3",
   ]
 
+  COMMENT_PARAM_ANSWERS = [
+    "",
+    "1-this-is-the-greatest-post-23_-asf",
+    "2-just-a-normal-for-15-test-string",
+    "3-just-george-normal-for-15-test-string",
+  ]
+
   TOPIC_ONE_PARAM_ANSWERS = [
     "",
     "my-string",

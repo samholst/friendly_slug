@@ -1,0 +1,14 @@
+one:
+  id: 1
+  blog_id: 1
+  body: This is the greatest post !@#23_ &^asf
+
+two:
+  id: 2
+  blog_id: 2
+  body: Just a normal for $15 test string!
+
+three:
+  id: 3
+  blog_id: 3
+  body: Just george  normal for $15 test string!
