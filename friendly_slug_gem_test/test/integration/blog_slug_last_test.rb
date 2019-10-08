@@ -1,9 +1,9 @@
 require 'test_helper'
 
-class BlogDbSlug
+class BlogSlugLast
 end
 
-class BlogDbSlugTest < ActionDispatch::IntegrationTest
+class BlogSlugLastTest < ActionDispatch::IntegrationTest
   # Doesn't work with CI
   # Blog.all.each do |blog|
   #   test "friendly slug filters out ##{blog.id} title" do
