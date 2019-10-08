@@ -1,6 +1,6 @@
 one:
   id: 1
-  blog_id: 1
+  blog_id: 2
   body: This is the greatest post !@#23_ &^asf
 
 two:
